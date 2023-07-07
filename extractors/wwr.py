@@ -25,9 +25,9 @@ def extract_wwr_jobs(keyword):
         title = anchor.find('span', class_='title') # find() 결과 가져옴
         job_data = {
           'link' : f"https://weworkremotely.com{link}", # 다시 검색해서 링크 받기 -> ★ 사용자들이 엑셀에서 클릭할 링크
-          'company' : company.string, # .string을 사용하면 태그 안에 있는 텍스트를 줌 ex) <span class="title"> title here </span> -> beautifulsoup가 title here만 남겨줌
-          'location' : region.string,
-          'position' : title.string
+          'company' : company.string.replace(",", " "), # .string을 사용하면 태그 안에 있는 텍스트를 줌 ex) <span class="title"> title here </span> -> beautifulsoup가 title here만 남겨줌
+          'location' : region.string.replace(",", " "),
+          'position' : title.string.replace(",", " ")
         }
         results.append(job_data) # job을 추출할 때마다 그것들을 비어있는 list(11줄) 안에 넣음
     return results
