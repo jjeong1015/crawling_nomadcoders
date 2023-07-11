@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.sudo
     pkgs.pws
     pkgs.apacheHttpdPackages.php
     pkgs.python38Full
